@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Falah - Spiritual Harmony & Excellence</title>
+
+    <!-- 1. EXTERNAL FONTS & ICONS -->
+    <!-- Google Fonts: Inter (Global) & Anek Malayalam (Native Support) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Anek+Malayalam:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome: Used for icons like the Hamburger menu, Phone, and Map markers -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Local Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- 2. LANGUAGE SELECTION MODAL 
+         Appears only on the first visit. Managed by script.js using LocalStorage.
+    -->
+    <div class="modal-overlay" id="lang-modal">
+        <div class="modal glass-card">
+            <h2 id="modal-title">Select Language / ഭാഷ തിരഞ്ഞെടുക്കുക</h2>
+            <div class="modal-buttons">
+                <!-- Clicking these calls setLanguage() which saves the choice to browser memory -->
+                <button class="btn-primary" onclick="setLanguage('en')">English</button>
+                <button class="btn-primary" onclick="setLanguage('ml')">മലയാളം</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 3. NAVIGATION BAR (FIXED AT TOP)
+         - "scrolled" class is added by script.js when user scrolls down.
+         - "nav-hidden" class is added when scrolling down quickly.
+    -->
+    <nav class="navbar" id="navbar">
+        <a href="#home" class="navbar-brand" data-t="masjidName">Masjidul Falah</a>
+        <div class="nav-controls">
+            <!-- Navbar Language Toggle: Switches between EN and ML instantly -->
+            <button class="lang-toggle" onclick="toggleLanguage()" id="lang-toggle-btn">🌐 EN</button>
+
+            <!-- Hamburger Menu Button: Toggles the sidemenu (.mobile-menu) -->
+            <div class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars icon" id="hamburger-icon"></i>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- 4. MOBILE / SIDE MENU DRAWER
+         - Opens from the right with TranslateX(0).
+         - Each <a> tag has a "data-t" attribute. This key matches a entry in script.js translations object.
+    -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#home" data-t="home">Home</a>
+        <a href="#admin" data-t="admin">Administration</a>
+        <a href="#history" data-t="history">History</a>
+        <a href="#gallery" data-t="gallery">Gallery</a>
+        <a href="#madrasa" data-t="madrasa">Madrasa</a>
+        <a href="#service" data-t="service">Public Service</a>
+        <a href="#edu" data-t="edu">Education / Culture</a>
+        <a href="#zakat" data-t="zakat">Zakat Awareness</a>
+        <a href="#org" data-t="org">Organization</a>
+        <a href="#contact" data-t="contact">Contact</a>
+        <a href="#masjid-3d-view" data-t="masjid3d">3D Masjid View</a>
+    </div>
+
+    <!-- 5. MAIN CONTENT SECTIONS
+         - Each section has a unique ID (e.g., id="admin") which matches the href in the menu links.
+         - "visible" class is added by the Intersection Observer in script.js to trigger the fade-in animation.
+    -->
+
+    <!-- Hero Section: The main landing view -->
+    <section id="home" class="hero visible">
+        <div class="hero-content">
+            <h1 data-t="heroTitle">Connecting Hearts, Building Faith</h1>
+            <p data-t="heroSubtitle">Masjid Falah is more than just a place of worship; it is a center of excellence for
+                spiritual growth and community development.</p>
+    </section>
+
+    <main class="container">
+        <!-- Gallery Section (Bento Grid) -->
+        <section id="gallery">
+            <h2 data-t="galleryTitle">Mosque Gallery</h2>
+            <div class="bento-grid">
+                <div class="bento-item large glass-card">
+                    <img src="assets/gallery-1.png" alt="Interior View">
+                    <div class="bento-overlay">
+                        <h4 data-t="gallery1">Main Prayer Hall</h4>
+                    </div>
+                </div>
+                <div class="bento-item tall glass-card">
+                    <img src="assets/gallery-2.png" alt="Garden View">
+                    <div class="bento-overlay">
+                        <h4 data-t="gallery2">Mosque Garden</h4>
+                    </div>
+                </div>
+                <div class="bento-item glass-card">
+                    <img src="assets/gallery-3.png" alt="Community Hall">
+                    <div class="bento-overlay">
+                        <h4 data-t="gallery3">Community Hall</h4>
+                    </div>
+                </div>
+                <div class="bento-item glass-card">
+                    <img src="assets/hero-mosque.png" alt="Exterior View">
+                    <div class="bento-overlay">
+                        <h4 data-t="gallery4">Exterior View</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Administration Section -->
+        <section id="admin">
+            <h2 data-t="adminTitle">Masjid Administration</h2>
+            <div class="grid">
+                <div class="card glass-card">
+                    <h3 data-t="president">President</h3>
+                    <p data-t="presidentDesc">Leading with vision and spiritual integrity for the betterment of our
+                        community members.</p>
+                    <p data-t="presidentName"><strong>A.P Abdul Khader</strong></p>
+                </div>
+                <div class="card glass-card">
+                    <h3 data-t="secretary">Secretary</h3>
+                    <p data-t="secretaryDesc">Managing operations and coordination for all mosque activities and public
+                        services.</p>
+                    <p data-t="secretaryName"><strong>U. Jamaluddin (Madhu)</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history">
+            <h2 data-t="historyTitle">Our History</h2>
+            <div class="timeline glass-card" style="padding: 4rem;">
+                <div class="grid" style="grid-template-columns: 1fr;">
+                    <div class="card glass-card" style="border-left: 4px solid var(--secondary);">
+                        <h3>1995</h3>
+                        <p data-t="hist1">Foundation stone laid by the founding committee to establish a community
+                            center.</p>
+                    </div>
+                    <div class="card glass-card" style="border-left: 4px solid var(--secondary);">
+                        <h3>2005</h3>
+                        <p data-t="hist2">Completion of the main prayer hall and inauguration for public services.</p>
+                    </div>
+                    <div class="card glass-card" style="border-left: 4px solid var(--secondary);">
+                        <h3>2015</h3>
+                        <p data-t="hist3">Establishment of the modern Madrasa and educational wing.</p>
+                    </div>
+                    <div class="card glass-card" style="border-left: 4px solid var(--secondary);">
+                        <h3>2024</h3>
+                        <p data-t="hist4">Implementing digital initiatives and community welfare programs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Madrasa Section -->
+        <section id="madrasa">
+            <h2 data-t="madrasaTitle">Madrasa Activities</h2>
+            <div class="grid">
+                <div class="card glass-card">
+                    <i class="fa-solid fa-book-quran fa-2x mb-3" style="color:var(--secondary)"></i>
+                    <h3 data-t="madrasaCurr">Curriculum</h3>
+                    <p data-t="madrasaCurrDesc">Comprehensive Islamic education covering Quran recitation, Hadith, and
+                        moral studies.</p>
+                </div>
+                <div class="card glass-card">
+                    <i class="fa-solid fa-hands-praying fa-2x mb-3" style="color:var(--secondary)"></i>
+                    <h3 data-t="madrasaExtra">Extracurricular</h3>
+                    <p data-t="madrasaExtraDesc">Islamic cultural competitions, arts, and physical education for student
+                        holistic development.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Public Service Section -->
+        <section id="service">
+            <h2 data-t="serviceTitle">Public Service</h2>
+            <div class="grid">
+                <div class="card glass-card">
+                    <i class="fa-solid fa-hand-holding-heart fa-3x mb-4" style="color:var(--secondary)"></i>
+                    <h3 data-t="charity">Charity Works</h3>
+                    <p data-t="charityDesc">Welfare programs for the needy, medical aid assistance, and neighborhood
+                        support initiatives.</p>
+                </div>
+                <div class="card glass-card">
+                    <i class="fa-solid fa-mosque fa-3x mb-4" style="color:var(--secondary)"></i>
+                    <h3 data-t="community">Community Integration</h3>
+                    <p data-t="communityDesc">Building bonds between different groups through dialogue and joint social
+                        activities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education/Culture Section -->
+        <section id="edu">
+            <h2 data-t="eduTitle">Education & Culture</h2>
+            <div class="grid">
+                <div class="card glass-card">
+                    <i class="fa-solid fa-microphone-lines fa-2x mb-3" style="color:var(--secondary)"></i>
+                    <h3 data-t="lectures">Monthly Lectures</h3>
+                    <p data-t="lecturesDesc">Expert scholars discussing contemporary issues from an Islamic perspective.
+                    </p>
+                </div>
+                <div class="card glass-card">
+                    <i class="fa-solid fa-book-open-reader fa-2x mb-3" style="color:var(--secondary)"></i>
+                    <h3 data-t="library">Masjid Library</h3>
+                    <p data-t="libraryDesc">A collection of classic and modern Islamic literature accessible to all
+                        parishioners.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zakat Section -->
+        <section id="zakat">
+            <h2 data-t="zakatTitle">Zakat Awareness</h2>
+            <div class="card glass-card" style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <i class="fa-solid fa-scale-balanced fa-3x mb-4" style="color:var(--secondary)"></i>
+                <h3 data-t="whatIsZakat">The Importance of Zakat</h3>
+                <p data-t="zakatDesc">Zakat is a mandatory charitable contribution, often considered a tax. It is the
+                    third pillar of Islam and serves to purify one's wealth and character by sharing with those in need.
+                </p>
+                <p data-t="zakatNotice"
+                    style="font-style: italic; margin-top: 1.5rem; color: var(--text-muted); padding: 1rem; border: 1px dashed rgba(0,0,0,0.1); border-radius: 10px;">
+                    Please contact our administrative office for information on how to calculate your Zakat obligations
+                    according to Shari'ah principles.</p>
+            </div>
+        </section>
+
+        <!-- Organization Section -->
+        <section id="org">
+            <h2 data-t="orgTitle">Organization / Movement</h2>
+            <div class="grid">
+                <div class="card glass-card">
+                    <i class="fa-solid fa-star-and-crescent fa-2x mb-3" style="color:var(--secondary)"></i>
+                    <h3 data-t="mission">Our Mission</h3>
+                    <p data-t="missionDesc">To establish a resilient and spiritually sound community grounded in logic,
+                        love, and service.</p>
+                </div>
+                <div class="card glass-card">
+                    <i class="fa-solid fa-moon fa-2x mb-3" style="color:var(--secondary)"></i>
+                    <h3 data-t="vision">Our Vision</h3>
+                    <p data-t="visionDesc">To become a beacon of light for the entire region, showcasing the beauty of
+                        true Islamic values.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 data-t="contactTitle">Contact & Location</h2>
+            <div class="contact-info">
+                <div class="card glass-card" style="flex: 1; min-width: 350px;">
+                    <h3 data-t="getInTouch">Get In Touch</h3>
+                    <p><i class="fa-solid fa-map-marker-alt"></i> <strong data-t="addressLabel">Address</strong><br><span data-t="addressValue">Masjidul Falah, 72R3+FQ5, Valiyaparamba, Kerala 673602</span></p>
+                    <p><i class="fa-solid fa-phone"></i> <strong data-t="phoneLabel">Phone</strong><br>+91 (000) 123-4567</p>
+                    <p><i class="fa-solid fa-envelope"></i> <strong data-t="emailLabel">Email</strong><br>info@masjidfalah.org</p>
+                    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                        <a href="#" style="color:var(--primary); font-size: 1.5rem;"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" style="color:var(--primary); font-size: 1.5rem;"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://maps.app.goo.gl/j4XZF9hKoNLCjct46" target="_blank" style="color:var(--primary); font-size: 1.5rem;"><i class="fa-solid fa-location-dot"></i></a>
+                    </div>
+                </div>
+                <div class="map-container glass-card">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500812.17136208806!2d75.42771067343752!3d11.291146400000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba6414ff8fbad8b%3A0x46952539b8e5b68f!2sMASJID%20AL-%20FALAH%20VALIYA%20PARAMB!5e0!3m2!1sen!2sin!4v1774754745672!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D Masjid View Placeholder Section -->
+        <section id="masjid-3d-view">
+            <h2 data-t="masjid3d">3D Masjid View</h2>
+            <div id="masjid-3d-container" class="glass-card"
+                style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1rem; color: var(--primary);">
+                <i class="fa-solid fa-kaaba fa-4x" style="opacity: 0.2"></i>
+                <p data-t="modelSoon" style="font-weight: 700;">3D Model Coming Soon</p>
+                <span style="font-size: 0.9rem; opacity: 0.6;">(Compatible with Three.js / GLB / Sketchfab)</span>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
